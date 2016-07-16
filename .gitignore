@@ -36,5 +36,8 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Test code
+test.js
+
 # Cookies for testing
 cookies.json
