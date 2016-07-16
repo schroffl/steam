@@ -1,0 +1,27 @@
+{
+  "name": "steam",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schroffl/steam.git"
+  },
+  "keywords": [
+    "steam"
+  ],
+  "author": "schroffl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schroffl/steam/issues"
+  },
+  "homepage": "https://github.com/schroffl/steam#readme",
+  "dependencies": {
+    "node-rsa": "^0.4.0",
+    "request": "^2.72.0",
+    "rsa-pem-from-mod-exp": "^0.8.4"
+  }
+}
