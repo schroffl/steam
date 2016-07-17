@@ -166,7 +166,7 @@ Buy an item from the market
 
 **Example**  
 ```js
-Market.buy({ 'listingid': 'xxxxxxxx', currency': 3, 'subtotal': 1, 'fee': 2 })// Buys listing with id 'xxxxxxxx'
+Market.buy({ 'listingid': 'xxxxxxxx', 'currency': 3, 'subtotal': 1, 'fee': 2 })// Buys listing with id 'xxxxxxxx'
 ```
 <a name="module_steam.Market.sell"></a>
 
