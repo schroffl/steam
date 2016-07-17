@@ -129,6 +129,7 @@ Get the price history of an item
 | Param | Type | Description |
 | --- | --- | --- |
 | obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.user | <code>SteamUser</code> | Instance of SteamUser |
 | obj.appid | <code>Number</code> | The steam-appid of the application |
 | obj.name | <code>String</code> | The name of the item on the market |
 
@@ -162,15 +163,16 @@ Buy an item from the market
 | Param | Type | Description |
 | --- | --- | --- |
 | obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.user | <code>SteamUser</code> | Instance of SteamUser |
 | obj.listingid | <code>String</code> &#124; <code>Number</code> | The id of the listing on the market |
 | obj.currency | <code>Number</code> | The currency to use |
 | obj.subtotal | <code>Number</code> | The price of the item (without fee) |
 | obj.fee | <code>Number</code> | The fee on the item |
-| obj.quantity | <code>Number</code> | The amount of items to buy (Defaults to 1) |
+| obj.quantity | <code>Number</code> | The amount of items to buy (Defaults                                             to 1) |
 
 **Example**  
 ```js
-Market.buy({ 'listingid': 'xxxxxxxx', 'currency': 3, 'subtotal': 1, 'fee': 2 })// Buys listing with id 'xxxxxxxx'
+Market.buy({ 'listingid': 'xxxxxxxx', 'currency': 3, 'subtotal': 1, 'fee': 2 }) // Buys listing with id 'xxxxxxxx'
 ```
 <a name="module_steam.Market.sell"></a>
 
@@ -183,14 +185,15 @@ Create a listing for an item on the market
 | Param | Type | Description |
 | --- | --- | --- |
 | obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.user | <code>SteamUser</code> | Instance of SteamUser |
 | obj.appid | <code>Number</code> | The steam-appid of the application |
 | obj.assetid | <code>Number</code> | The item id in the inventory of the user |
-| obj.price | <code>Number</code> | The amount of money the seller will receive                                    (without fee) |
-| obj.quantity | <code>Number</code> | The amount of items to sell (Defaults to 1) |
+| obj.price | <code>Number</code> | The amount of money the seller will                                        receive (without fee) |
+| obj.quantity | <code>Number</code> | The amount of items to sell (Defaults to                                        1) |
 
 **Example**  
 ```js
-Market.sell({ user, 'assetid': 'xxxxxxxx', 'price': 1, 'quantity': 1 })// Lists item 'xxxxxxxx' for 1 (steam specifies no currency either??) on the market
+Market.sell({ user, 'assetid': 'xxxxxxxx', 'price': 1, 'quantity': 1 }) // Lists item 'xxxxxxxx' for 1 (steam specifies no currency either??) on the market
 ```
 <a name="module_steam.Market.defaults"></a>
 
