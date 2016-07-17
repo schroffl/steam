@@ -44,7 +44,7 @@ Authorize at steam
 
 **Example**  
 ```js
-const user = new SteamUser('username');user.login('password') .then(console.log) .catch(console.error);
+const user = new SteamUser('username');
 ```
 <a name="module_steam.SteamUser+login"></a>
 
@@ -59,6 +59,10 @@ Login to steam
 | password | <code>String</code> | The password |
 | options | <code>Object</code> | Custom data in the POST body |
 
+**Example**  
+```js
+user.login('password');
+```
 <a name="module_steam.SteamUser+logout"></a>
 
 #### steamUser.logout() ⇒ <code>Promise</code>
