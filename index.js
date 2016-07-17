@@ -1,6 +1,10 @@
 'use strict';
 
+
+/**
+ * @module           steam
+ */
 module.exports = {
-	'User': require('./lib/user'),
+	'SteamUser': require('./lib/user'),
 	'Market': require('./lib/market')
 };
