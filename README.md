@@ -14,8 +14,8 @@
         * [.priceinfo(obj)](#module_steam.Market.priceinfo) ⇒ <code>Promise</code>
         * [.pricehistory(obj)](#module_steam.Market.pricehistory) ⇒ <code>Promise</code>
         * [.listings(obj)](#module_steam.Market.listings) ⇒ <code>Promise</code>
-        * [.buy()](#module_steam.Market.buy) ⇒ <code>Promise</code>
-        * [.sell()](#module_steam.Market.sell) ⇒ <code>Promise</code>
+        * [.buy(obj)](#module_steam.Market.buy) ⇒ <code>Promise</code>
+        * [.sell(obj)](#module_steam.Market.sell) ⇒ <code>Promise</code>
         * [.defaults()](#module_steam.Market.defaults) ⇒ <code>Object</code>
 
 <a name="module_steam.SteamUser"></a>
@@ -91,8 +91,8 @@ Gather information from the steamcommunity market.
     * [.priceinfo(obj)](#module_steam.Market.priceinfo) ⇒ <code>Promise</code>
     * [.pricehistory(obj)](#module_steam.Market.pricehistory) ⇒ <code>Promise</code>
     * [.listings(obj)](#module_steam.Market.listings) ⇒ <code>Promise</code>
-    * [.buy()](#module_steam.Market.buy) ⇒ <code>Promise</code>
-    * [.sell()](#module_steam.Market.sell) ⇒ <code>Promise</code>
+    * [.buy(obj)](#module_steam.Market.buy) ⇒ <code>Promise</code>
+    * [.sell(obj)](#module_steam.Market.sell) ⇒ <code>Promise</code>
     * [.defaults()](#module_steam.Market.defaults) ⇒ <code>Object</code>
 
 <a name="module_steam.Market.priceinfo"></a>
@@ -105,7 +105,10 @@ Get price information about a given item
 
 | Param | Type | Description |
 | --- | --- | --- |
-| obj | <code>Object</code> | Multiple objects that will be merged into                                one. Must have property 'currency',                                'appid' and 'name' |
+| obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.currency | <code>Number</code> | The currency to use |
+| obj.appid | <code>Number</code> | The steam-appid of the application |
+| obj.name | <code>String</code> | The name of the item on the market |
 
 **Example**  
 ```js
@@ -121,7 +124,9 @@ Get the price history of an item
 
 | Param | Type | Description |
 | --- | --- | --- |
-| obj | <code>Object</code> | Multiple objects that will be merged into                                one. Must have property 'currency',                                'appid' and 'name' |
+| obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.appid | <code>Number</code> | The steam-appid of the application |
+| obj.name | <code>String</code> | The name of the item on the market |
 
 <a name="module_steam.Market.listings"></a>
 
@@ -134,7 +139,9 @@ Get all listings for a given item
 | Param | Type | Description |
 | --- | --- | --- |
 | obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
-| obj.appid | <code>Number</code> | The steam-appid of the game |
+| obj.currency | <code>Number</code> | The currency to use |
+| obj.appid | <code>Number</code> | The steam-appid of the application |
+| obj.name | <code>String</code> | The name of the item on the market |
 
 **Example**  
 ```js
@@ -142,18 +149,45 @@ Market.listings({ 'currency': 3, 'appid': 730, 'name': 'AK-47 | Redline (Well-Wo
 ```
 <a name="module_steam.Market.buy"></a>
 
-#### Market.buy() ⇒ <code>Promise</code>
-{ function_description }
+#### Market.buy(obj) ⇒ <code>Promise</code>
+Buy an item from the market
 
 **Kind**: static method of <code>[Market](#module_steam.Market)</code>  
-**Returns**: <code>Promise</code> - { description_of_the_return_value }  
+**Returns**: <code>Promise</code> - Resolves on successful purchase  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.listingid | <code>String</code> &#124; <code>Number</code> | The id of the listing on the market |
+| obj.currency | <code>Number</code> | The currency to use |
+| obj.subtotal | <code>Number</code> | The price of the item (without fee) |
+| obj.fee | <code>Number</code> | The fee on the item |
+| obj.quantity | <code>Number</code> | The amount of items to buy (Defaults to 1) |
+
+**Example**  
+```js
+Market.buy({ 'listingid': 'xxxxxxxx', currency': 3, 'subtotal': 1, 'fee': 2 })// Buys listing with id 'xxxxxxxx'
+```
 <a name="module_steam.Market.sell"></a>
 
-#### Market.sell() ⇒ <code>Promise</code>
-{ function_description }
+#### Market.sell(obj) ⇒ <code>Promise</code>
+Create a listing for an item on the market
 
 **Kind**: static method of <code>[Market](#module_steam.Market)</code>  
-**Returns**: <code>Promise</code> - { description_of_the_return_value }  
+**Returns**: <code>Promise</code> - Resolves on successful creation of the listing  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>Object</code> | Multiple objects that will be merged into                                one. |
+| obj.appid | <code>Number</code> | The steam-appid of the application |
+| obj.assetid | <code>Number</code> | The item id in the inventory of the user |
+| obj.price | <code>Number</code> | The amount of money the seller will receive                                    (without fee) |
+| obj.quantity | <code>Number</code> | The amount of items to sell (Defaults to 1) |
+
+**Example**  
+```js
+Market.sell({ user, 'assetid': 'xxxxxxxx', 'price': 1, 'quantity': 1 })// Lists item 'xxxxxxxx' for 1 (steam specifies no currency either??) on the market
+```
 <a name="module_steam.Market.defaults"></a>
 
 #### Market.defaults() ⇒ <code>Object</code>
