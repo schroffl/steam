@@ -24,5 +24,8 @@
     "node-rsa": "^0.4.0",
     "request": "^2.72.0",
     "rsa-pem-from-mod-exp": "^0.8.4"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^1.3.6"
   }
 }
